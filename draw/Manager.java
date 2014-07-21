@@ -36,6 +36,8 @@ public class Manager
 	static int defaultLength = 600;
 	static int defaultHeight = 450;
 	
+	public static org.newdawn.slick.Graphics slick = new org.newdawn.slick.Graphics();
+	
 	public Manager(String t)
 	{
 		windowLength = defaultLength;

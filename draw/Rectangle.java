@@ -23,6 +23,10 @@ import static org.lwjgl.opengl.GL11.glVertex2f;
 
 import org.lwjgl.util.Color;
 
+//Don't use this use Slick2D, it's much better. This is what I used before I discovered Slick2D.
+//http://slick.ninjacave.com
+
+
 public class Rectangle
 {
 	public static float x;
