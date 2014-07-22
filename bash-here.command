@@ -1,0 +1,1 @@
+open -a Terminal ~/Documents/Workspace/ruthlessphysics-util/

@@ -1,0 +1,6 @@
+*.class
+*.jar
+*.dll
+*.so
+*.dylib
+*.jnilib
