@@ -16,25 +16,6 @@ import javax.swing.*;
 import java.io.*;
 import java.util.*;
 
-/*
-
-EXCEPTION TEMPLATE
-
-try
-{
-//code
-}
-catch (Exception e)
-{
-e.printStackTrace();
-if(Debug.displayDebug())
-{
-JOptionPane.showMessageDialog(null,e.getStackTrace(),"pCalculator Error",JOptionPane.ERROR_MESSAGE);
-}
-}
-
- */
-
 public class Debug
 {
 	public static String title = "default";
