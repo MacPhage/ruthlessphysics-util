@@ -22,6 +22,8 @@ import static org.lwjgl.opengl.GL11.glLoadIdentity;
 import static org.lwjgl.opengl.GL11.glMatrixMode;
 import static org.lwjgl.opengl.GL11.glOrtho;
 
+import java.awt.Point;
+
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
@@ -30,9 +32,9 @@ import com.ruthlessphysics.util.Debug;
 
 public class Manager
 {
-	static int windowLength;
-	static int windowHeight;
-	static String windowTitle;
+	private static int windowLength;
+	private static int windowHeight;
+	private static String windowTitle;
 	static int defaultLength = 600;
 	static int defaultHeight = 450;
 	
@@ -82,6 +84,23 @@ public class Manager
 	public static void setWindowTitle(String newWindowTitle)
 	{
 		windowTitle = newWindowTitle;
+	}
+	
+	public static String getWindowTitle()
+	{
+		return windowTitle;
+	}
+	public static int getWindowLength()
+	{
+		return windowLength;
+	}
+	public static int getWindowHeight()
+	{
+		return windowHeight;
+	}
+	public static Point getWindowDimensions()
+	{
+		return new Point(windowLength, windowHeight);
 	}
 
 	public static void init()

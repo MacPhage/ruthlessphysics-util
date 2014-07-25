@@ -53,4 +53,95 @@ public class ExtraMath
 		result /= (long)l.length;
 		return result;
 	}
+	
+	public static boolean inRangeOf(double check, double from, double to)
+	{
+		if(check >= from && check <= to)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public static boolean inRangeOf(float check, float from, float to)
+	{
+		if(check >= from && check <= to)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public static boolean inRangeOf(long check, int from, int to)
+	{
+		if(check >= from && check <= to)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public static boolean inRangeOf(long check, long from, long to)
+	{
+		if(check >= from && check <= to)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public static boolean inBetween(double check, double from, double to)
+	{
+		if(check > from && check < to)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public static boolean inBetween(float check, float from, float to)
+	{
+		if(check > from && check < to)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public static boolean inBetween(int check, int from, int to)
+	{
+		if(check > from && check < to)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public static boolean inBetween(long check, long from, long to)
+	{
+		if(check > from && check < to)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
 }
