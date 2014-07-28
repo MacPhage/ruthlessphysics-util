@@ -1,256 +1,41 @@
-//
-//  Debug.java
-//
-//  Java Source File
-//
-//  Created by Austin Jackson
-//
-//  Further updates
-//  http://srchub.org/u/mac
-//
-
 package com.ruthlessphysics.util;
 
-import javax.swing.*;
-
-import java.io.*;
-import java.util.*;
+import javax.swing.JOptionPane;
 
 public class Debug
 {
-	public static String title = "default";
-	public static void println(String text)
+	public static boolean alertDebugErrors(Config config)
 	{
-		if(shouldLog())
-		{
-			System.out.println("[Debug.java]: "+text);
-		}
-	}
-	public static void print(String text)
-	{
-		if(shouldLog())
-		{
-			System.out.print("[Debug.java]: "+text);
-		}
-	}
-	public static void displayError(Exception e)
-	{
-		if(displayDebug())
-		{
-			JOptionPane.showMessageDialog(null,e.getStackTrace(),"pCalculator Error",JOptionPane.ERROR_MESSAGE);
-		}
-	}
-	public static void setTitle(String s)
-	{
-		title = s;
-	}
-	public static void setDefault()
-	{
-		Properties config = new Properties();
-		OutputStream output = null;
 		try
 		{
-			output = new FileOutputStream(title+"-debug.properties");
-			config.setProperty("displayDebug", "yes");
-			config.setProperty("alertAlwaysAs", "pass");
-			config.setProperty("defaultCommand","help");
-			config.setProperty("shouldLog","yes");
-			config.setProperty("seperator",Character.toString('\u1337'));
-			config.store(output, null);
+			return Boolean.valueOf(config.get("AlertDebugErrors").toString());
 		}
-		catch (IOException io)
+		catch(Exception e)
 		{
-			io.printStackTrace();
-		}
-		finally
-		{
-			if (output != null)
-			{
-				try
-				{
-					output.close();
-				}
-				catch (IOException e)
-				{
-					e.printStackTrace();
-				}
-			}
-		}
-	}
-	public static boolean displayDebug()
-	{
-		Properties prop = new Properties();
-		InputStream input = null;
-		try
-		{
-			input = new FileInputStream("pcalculator-debug.properties");
-			prop.load(input);
-			String should = prop.getProperty("displayDebug");
-			if(should.equals("yes"))
-			{
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-		}
-		catch (IOException ex)
-		{
-			ex.printStackTrace();
 			return false;
 		}
-		finally
-		{
-			if (input != null)
-			{
-				try
-				{
-					input.close();
-				}
-				catch (IOException e)
-				{
-					e.printStackTrace();
-					return false;
-				}
-			}
-		}
 	}
-	public static String alertAlwaysAs()
+	public static boolean logDebugErrors(Config config)
 	{
-		Properties prop = new Properties();
-		InputStream input = null;
 		try
 		{
-			input = new FileInputStream("pcalculator-debug.properties");
-			prop.load(input);
-			String type = prop.getProperty("alertAlwaysAs");
-			return type;
+			return Boolean.valueOf(config.get("LogDebugErrors").toString());
 		}
-		catch (IOException ex)
+		catch(Exception e)
 		{
-			ex.printStackTrace();
-			return "pass";
-		}
-		finally
-		{
-			if (input != null)
-			{
-				try
-				{
-					input.close();
-				}
-				catch (IOException e)
-				{
-					e.printStackTrace();
-					return "pass";
-				}
-			}
-		}
-	}
-	public static String defaultCommand()
-	{
-		Properties prop = new Properties();
-		InputStream input = null;
-		try
-		{
-			input = new FileInputStream("pcalculator-debug.properties");
-			prop.load(input);
-			String type = prop.getProperty("defaultCommand");
-			return type;
-		}
-		catch (IOException ex)
-		{
-			ex.printStackTrace();
-			return "help";
-		}
-		finally
-		{
-			if (input != null)
-			{
-				try
-				{
-					input.close();
-				}
-				catch (IOException e)
-				{
-					e.printStackTrace();
-					return "help";
-				}
-			}
-		}
-	}
-	public static boolean debugFileExists()
-	{
-		Properties prop = new Properties();
-		InputStream input = null;
-		try
-		{
-			input = new FileInputStream("pcalculator-debug.properties");
-			prop.load(input);
 			return true;
 		}
-		catch (IOException ex)
-		{
-			ex.printStackTrace();
-			return false;
-		}
-		finally
-		{
-			if (input != null)
-			{
-				try
-				{
-					input.close();
-				}
-				catch (IOException e)
-				{
-					e.printStackTrace();
-					return false;
-				}
-			}
-		}
 	}
-	public static boolean shouldLog()
+	
+	public static void displayError(Exception e)
 	{
-		Properties prop = new Properties();
-		InputStream input = null;
-		try
-		{
-			input = new FileInputStream("pcalculator-debug.properties");
-			prop.load(input);
-			String should = prop.getProperty("shouldLog");
-			if(should.equals("yes"))
-			{
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-		}
-		catch (IOException ex)
-		{
-			ex.printStackTrace();
-			return false;
-		}
-		finally
-		{
-			if (input != null)
-			{
-				try
-				{
-					input.close();
-				}
-				catch (IOException e)
-				{
-					e.printStackTrace();
-					return false;
-				}
-			}
-		}
+		JOptionPane.showMessageDialog(null,e.getStackTrace(),"Error",JOptionPane.ERROR_MESSAGE);
 	}
-	public static void alert(String message, String type) //Just like JavaScript :P
+	public static void logError(Exception e)
+	{
+		e.printStackTrace();
+	}
+	public static void alert(String message, String title, String type) //Just like JavaScript :P
 	{
 		type = type.toLowerCase();
 		if(type.equals("error"))
@@ -279,9 +64,13 @@ public class Debug
 			System.out.println("Attempted to alert() with invalid type: \'"+type+"\', went with plain instead.");
 		}
 	}
+	public static void alert(String message, String type)
+	{
+		alert(message,"Alert",type);
+	}
 	public static void alert(String message)
 	{
-		alert(message,"plain");
+		alert(message,"Alert","plain");
 	}
 	public static void message(String m,String output) //Just like JavaScript :P
 	{

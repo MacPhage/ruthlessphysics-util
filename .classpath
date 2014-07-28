@@ -37,5 +37,11 @@
 			<attribute name="javadoc_location" value="jar:platform:/resource/HeadProject/javadocs/org.eclipse.egit.github.core-2.1.5-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/Users/AustinJ/Dropbox/Workspace/HeadProject/lib/github-api-1.56-fat.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://github-api.kohsuke.org/apidocs/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/HeadProject/lib/json_simple-1.1-all/lib/json_simple-1.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
