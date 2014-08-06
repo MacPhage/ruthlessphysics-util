@@ -66,7 +66,7 @@ public class Config
 	{
 		try 
 		{
-			this.json = (JSONObject)new JSONParser().parse(IOTool.readFile(this.title+"-config.json"));
+			//this.json = (JSONObject)new JSONParser().parse(IOTool.readFile(this.title+"-config.json"));
 		} 
 		catch (Exception e) 
 		{
